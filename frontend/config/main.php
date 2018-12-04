@@ -12,8 +12,10 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+        'db' => require(__DIR__ . '/../../common/config/db.php'),
         'request' => [
             'csrfParam' => '_csrf-frontend',
+            'baseUrl' => '',
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -36,14 +38,12 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
+            'rules' => require (__DIR__.'/routes.php'),
+            'hostInfo' => $_ENV['YII_SETTINGS']['frontend']['domain'],
         ],
-        */
     ],
     'params' => $params,
 ];

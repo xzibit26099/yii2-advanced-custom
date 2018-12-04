@@ -2,6 +2,7 @@
 namespace backend\controllers;
 
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -54,7 +55,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays homepage.
+     * Отображает список файлов
      *
      * @return string
      */
@@ -64,7 +65,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Login action.
+     * Авторизация
      *
      * @return string
      */
@@ -87,7 +88,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Logout action.
+     * Разлогинивание
      *
      * @return string
      */

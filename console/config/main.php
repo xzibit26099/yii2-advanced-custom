@@ -19,9 +19,10 @@ return [
         'fixture' => [
             'class' => 'yii\console\controllers\FixtureController',
             'namespace' => 'common\fixtures',
-          ],
+        ],
     ],
     'components' => [
+        'db' => require(__DIR__ . '/../../common/config/db.php'),
         'log' => [
             'targets' => [
                 [
@@ -29,6 +30,9 @@ return [
                     'levels' => ['error', 'warning'],
                 ],
             ],
+        ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
         ],
     ],
     'params' => $params,

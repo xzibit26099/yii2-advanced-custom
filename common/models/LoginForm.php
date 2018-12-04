@@ -5,7 +5,10 @@ use Yii;
 use yii\base\Model;
 
 /**
- * Login form
+ * LoginForm
+ *
+ * Class LoginForm
+ * @package common\models
  */
 class LoginForm extends Model
 {
@@ -49,6 +52,19 @@ class LoginForm extends Model
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'username' => 'Логин',
+            'password' => 'Пароль',
+            'rememberMe' => 'Запомнить',
+        ];
+    }
+
+    /**
      * Logs in a user using the provided username and password.
      *
      * @return bool whether the user is logged in successfully
@@ -58,7 +74,7 @@ class LoginForm extends Model
         if ($this->validate()) {
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
         }
-        
+
         return false;
     }
 

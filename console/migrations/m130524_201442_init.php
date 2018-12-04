@@ -1,6 +1,7 @@
 <?php
 
 use yii\db\Migration;
+use common\models\User;
 
 class m130524_201442_init extends Migration
 {
@@ -24,6 +25,19 @@ class m130524_201442_init extends Migration
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
+
+        // Изначально задаём админа
+        // Логин - admin
+        // Пароль - passw0rd
+        $this->insert('user', [
+            'username' => 'admin',
+            'email' => 'admin@admin.com',
+            'auth_key' => 'Auwa9jsi-ChU8QBQp18UP2-36s9h4qxt',
+            'password_hash' => '$2y$13$cppZdvqh09kZTV7Wyoi3R.5PHJPPdWm92Vy4QWWMnP0/aav4s3Sey',
+            'status' => User::STATUS_ACTIVE,
+            'created_at' => 1535555403,
+            'updated_at' => 1535555403,
+        ]);
     }
 
     public function down()
